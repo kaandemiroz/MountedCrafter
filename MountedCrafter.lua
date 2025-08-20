@@ -20,48 +20,28 @@ buttonTexture:SetPoint("BOTTOMRIGHT", craftButton, "BOTTOMRIGHT", 0, 0)
 -- Mapping of crafting station names to profession IDs
 local CRAFTING_STATION_MAP = {
     -- Blacksmithing (164)
-    ["Anvil"] = 164,
-    ["Forge"] = 164,
-    ["Blacksmithing Table"] = 164,
-    ["Blacksmithing Anvil"] = 164,
-    ["Earthen Forge"] = 164,
-    ["Crystal Anvil"] = 164,
-    ["Earthen Anvil"] = 164,
+    ["Blacksmith's Table"] = 164,
     
     -- Alchemy (171)
-    ["Alchemy Lab"] = 171,
-    ["Alchemy Table"] = 171,
-    ["Alchemist's Table"] = 171,
+    ["Alchemist's Lab Bench"] = 171,
     
     -- Enchanting (333)
-    ["Enchanting Table"] = 333,
-    ["Enchanting Vellum"] = 333,
     ["Enchanter's Lectern"] = 333,
     
     -- Engineering (202)
-    ["Engineering Table"] = 202,
-    ["Engineering Workbench"] = 202,
-    ["Tinker Table"] = 202,
     ["Tinker's Workbench"] = 202,
     
     -- Leatherworking (165)
-    ["Leatherworking Table"] = 165,
-    ["Leatherworking Workbench"] = 165,
+    ["Leatherworker's Tool Bench"] = 165,
     
     -- Tailoring (197)
-    ["Tailoring Table"] = 197,
-    ["Tailoring Loom"] = 197,
     ["Tailor's Work Table"] = 197,
     
     -- Jewelcrafting (755)
     ["Jeweler's Bench"] = 755,
-    ["Jewelcrafting Table"] = 755,
-    ["Jewelcrafter's Table"] = 755,
-    ["Jewelcrafting Workbench"] = 755,
     
     -- Inscription (773)
-    ["Inscription Table"] = 773,
-    ["Inscription Desk"] = 773,
+    ["Scribe's Drafting Table"] = 773,
 }
 
 -- Function to check if player knows a profession
