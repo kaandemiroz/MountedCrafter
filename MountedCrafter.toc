@@ -1,7 +1,7 @@
 ## Interface: 110207
 ## Title: Mounted Crafter
 ## Author: Shadock
-## Version: 1.0
+## Version: 1.0.0
 ## DefaultState: enabled
 
 MountedCrafter.lua
