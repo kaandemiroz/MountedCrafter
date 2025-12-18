@@ -1,7 +1,7 @@
 -- Create the invisible button frame
 local craftButton = CreateFrame("Frame", "MountedCrafter", UIParent)
 craftButton:SetSize(10, 10)
-craftButton:SetAlpha(0) -- Make it invisible
+craftButton:SetAlpha(0)
 craftButton:Hide() 
 craftButton:EnableMouse(true)
 craftButton:SetPassThroughButtons("LeftButton", "MiddleButton", "Button4", "Button5")
@@ -81,33 +81,8 @@ end
 -- Function to open tradeskill window for a given profession ID
 local function OpenTradeskillWindow(professionID, objectName)
     if C_TradeSkillUI and C_TradeSkillUI.OpenTradeSkill then
-        -- Modern API approach
         C_TradeSkillUI.OpenTradeSkill(professionID)
         -- print("Opened " .. objectName .. " (Profession ID: " .. professionID .. ")")
-    else
-        -- Fallback to macro approach - try to cast the profession
-        local professionNames = {
-            [164] = "Blacksmithing",
-            [171] = "Alchemy",
-            [333] = "Enchanting",
-            [202] = "Engineering",
-            [165] = "Leatherworking",
-            [197] = "Tailoring",
-            [755] = "Jewelcrafting",
-            [773] = "Inscription",
-            [185] = "Cooking",
-            [182] = "Herbalism",
-            [186] = "Mining",
-            [960] = "Runeforging"
-        }
-        
-        local professionName = professionNames[professionID]
-        if professionName then
-            RunMacroText("/cast " .. professionName)
-            print("Attempted to open " .. professionName .. " via macro")
-        else
-            print("Unknown profession ID: " .. professionID)
-        end
     end
 end
 
@@ -208,11 +183,10 @@ hooksecurefunc("GameTooltip_Hide", function(self)
     UpdateCraftingButton()
 end)
 
--- Optional: Add visual feedback when button is active (for testing)
 local function ToggleVisibility(show)
     if show then
         craftButton:SetAlpha(1) -- Make fully visible for testing
-        print("Crafting button now visible for testing")
+        print("Crafting button will now be visible while hovering over crafting benches")
     else
         craftButton:SetAlpha(0) -- Make invisible again
         print("Crafting button now invisible")
@@ -221,16 +195,13 @@ end
 
 -- Slash command for testing
 SLASH_MOUNTEDCRAFTER1 = "/mountedcrafter"
-SLASH_MOUNTEDCRAFTER2 = "/mc"
+-- SLASH_MOUNTEDCRAFTER2 = "/mc"
 SlashCmdList["MOUNTEDCRAFTER"] = function(msg)
     if msg == "show" then
         ToggleVisibility(true)
     elseif msg == "hide" then
         ToggleVisibility(false)
-        print("Hiding crafting button")
     else
-        print("MountedCrafter commands:")
-        print("/mountedcrafter or /mc show - Toggle button visibility")
-        print("/mountedcrafter or /mc hide - Hide button")
+        print("/mountedcrafter [show/hide] - Toggle button visibility")
     end
 end
