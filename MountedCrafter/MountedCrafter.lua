@@ -64,14 +64,10 @@ end
 
 -- Function to check if we're mousing over a crafting object and return the object name
 local function IsMouseOverCraftingObject()
-    if InCombatLockdown() then
-        return false, nil
-    end
-
     -- Check for world objects using GameTooltip
     if GameTooltip:IsShown() and GameTooltip:GetAlpha() > 0.9 then
         local tooltipText = GameTooltipTextLeft1:GetText()
-        if tooltipText and CRAFTING_STATION_MAP[tooltipText] then
+        if tooltipText and canaccessvalue(tooltipText) and CRAFTING_STATION_MAP[tooltipText] then
             local professionID = CRAFTING_STATION_MAP[tooltipText]
             -- Only return true if player knows this profession
             if professionID and PlayerKnowsProfession(professionID) then
@@ -173,13 +169,9 @@ end)
 -- end)
 
 
-hooksecurefunc(GameTooltip, "Show", function(self)
-    if InCombatLockdown() then
-        return false, nil
-    end
-    
+hooksecurefunc(GameTooltip, "Show", function(self)    
     local tooltipText = GameTooltipTextLeft1:GetText()
-    if tooltipText and CRAFTING_STATION_MAP[tooltipText] then
+    if tooltipText and canaccessvalue(tooltipText) and CRAFTING_STATION_MAP[tooltipText] then
     end
     -- Crafting station detected, update button
     UpdateCraftingButton()
