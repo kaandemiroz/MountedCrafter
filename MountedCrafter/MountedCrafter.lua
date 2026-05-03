@@ -27,6 +27,7 @@ local CRAFTING_STATION_MAP = {
     
     -- Enchanting (333)
     ["Enchanter's Lectern"] = 333,
+    ["Enchanter's Lecturn"] = 333,
     
     -- Engineering (202)
     ["Tinker's Workbench"] = 202,
